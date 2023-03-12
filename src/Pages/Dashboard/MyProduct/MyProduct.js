@@ -7,22 +7,21 @@ import {useQuery} from '@tanstack/react-query';
 const MyProduct = () => {
     const {user} = useContext(AuthContext);
 
-    const url = `http://localhost:5000/orderings?email=${user?.email}`;
+    
 
     const { data:orderings = [] } = useQuery({
         queryKey: ['orderings', user?.email],
         queryFn: async() =>{
-            const res = await fetch(url,{
-              headers: {
-               authorization: `Bearer ${localStorage.getItem('accessToken')}`
-              }
-            });
+            const res = await fetch(`https://mobile-phone-server-mu.vercel.app/orderings?email=${user?.email}`);
           const data = await res.json();
           return data;
         } 
          
       })
-
+      // refetch();
+      // if(isLoading){
+      //   return <p className='text-5xl'>Loading....</p>
+      // }
     return (
         <div>
             <h1 className='text-3xl'>My Product</h1>
@@ -33,15 +32,14 @@ const MyProduct = () => {
     <thead>
       <tr>
         <th></th>
-        <th>userName</th>
-         <th>email</th>
-         <th>brand_name</th>
-         <th>original_price</th>
-         <th>resale_price</th>
+        <th>User Name</th>
+         <th>Email</th>
+         <th>Brand_name</th>
+         <th>Original_price</th>
          <th>Location</th>
-         <th>phone</th>
-         <th>postedDate</th>
-         <th>message</th>
+         <th>Phone</th>
+         <th>PurchaseDate</th>
+         <th>Description</th>
         
       </tr>
     </thead>
@@ -50,15 +48,14 @@ const MyProduct = () => {
       {orderings?.length && orderings.map((ordering, i) => <tr key={ordering._id}>
          <th>{i+1}</th>
          
-         <th>{ordering.userName}</th>
+         <th>{ordering.user}</th>
          <th>{ordering.email}</th>
-         <th>{ordering.brand_name}</th>
-         <th>{ordering.original_price}</th>
-         <th>{ordering.resale_price}</th>
-         <th>{ordering.Location}</th>
+         <th>{ordering.brandName}</th>
+         <th>{ordering.price}</th>
+         <th>{ordering.location}</th>
          <th>{ordering.phone}</th>
-         <th>{ordering.purchase_year}</th>
-         <th>{ordering.message}</th>
+         <th>{ordering.date}</th>
+         <th>{ordering.description}</th>
 
       </tr>)
       }
@@ -71,3 +68,5 @@ const MyProduct = () => {
 };
 
 export default MyProduct;
+
+

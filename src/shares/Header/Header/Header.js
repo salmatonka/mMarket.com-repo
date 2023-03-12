@@ -12,7 +12,7 @@ const Header = () => {
   }
   // console.log(user)
     return (
-        <div className="navbar bg-violet-400 py-6">
+        <div className="navbar bg-violet-400 py-6 ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -22,7 +22,8 @@ const Header = () => {
               <li><Link to='/'>Home</Link></li>
              <li><Link to='/blog'>Blog</Link></li>
              <li><Link to='/dashboard'>Dashboard</Link></li>
-             <li><Link to='/advertised'>Advertised</Link></li>
+             <li><Link to='/priceList'>Price List</Link></li>
+             <li><Link to='/about'>About Us</Link></li>
             </ul>
           </div> 
           
@@ -35,15 +36,26 @@ const Header = () => {
           <ul className="menu menu-horizontal p-0">
             <li><Link to='/'>Home</Link></li>
            <li><Link to='/blog'>Blog</Link></li>
-           <li><Link to='/dashboard'>Dashboard</Link></li>
-           <li><Link to='/advertised'>Advertised</Link></li>
+           <li><Link to='/priceList'>Price List</Link></li>
+             <li><Link to='/about'>About Us</Link></li>
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="">
           {
             user?.email ? 
             <>
-            <button onClick={handleLogOut} className="btn bg-violet-600 first-letter hidden lg:flex ">LogOut</button>
+             <ul className='px-2'><Link className='no-underline' to='/dashboard'>Dashboard</Link></ul>
+            <button onClick={handleLogOut} className="btn bg-violet-600 first-letter hidden lg:flex text-dec px-2">LogOut</button>
+           
+            <span > <img src={user?.photoURL ? user.photoURL
+
+          : <p className='text-sky-400 text-sm'>no photo</p> }
+              alt=""
+            style={{height:'40px'}}/> </span>
+
+          <h4 className=' text-xl'>{
+         user?.displayName ? user.displayName:'name Not Found'}</h4>
+
             </>
             :
             <Link to='/login' className="btn bg-violet-600">Login</Link>
@@ -60,3 +72,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+

@@ -4,8 +4,8 @@ const HomeBanner = () => {
     return (
         <div className='py-10'>
         <section className="dark:text-gray-100 bg-violet-200">
-<div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
-<div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
+          <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
+          <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
             <div className="lg:col-start-2">
                 <h3 className="text-2xl font-bold tracking-tight sm:text-3xl dark:text-gray-50">New to sourcing on mMarket.com?</h3>
                 <p className="mt-3 text-lg dark:text-gray-400">Find everything you need in one place. From finding ready-to-ship products or a partner to customize the product you want, all the way through to ensuring quality and shipping your order to its final destination.</p>
